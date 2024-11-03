@@ -488,7 +488,7 @@
 		"compilationTarget": {
 			"contracts/SupplyChain.sol": "SupplyChain"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -501,11 +501,11 @@
 	},
 	"sources": {
 		"contracts/SupplyChain.sol": {
-			"keccak256": "0xf27308291b1b3613ce1669bbdb8d119deff5d9187690a3e46bfb9113a9492d59",
+			"keccak256": "0x8f86a329cfa6db40e634d619ffa3ed5e88ea43ee9b9e106eb60ba9a430cb82a3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://586b990f82454444659488871777e3a0bd19297773540cace896fbcfa6970e81",
-				"dweb:/ipfs/QmNTHji1cR1SkD864APnr8nPREtMdo9dFfqT2PdNxnFcHL"
+				"bzz-raw://b7afb23880f7b60b896c5a689fcd9978c644d54c8b7e01657f1420946c8328d8",
+				"dweb:/ipfs/Qmf19PHt1RLoBqopAPtW8cyGY6824skaaMUmAaF9fyRAz5"
 			]
 		}
 	},
