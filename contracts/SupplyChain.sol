@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity ^0.8.26;
 
 contract SupplyChain {
    //Smart Contract owner will be the person who deploys the contract only he can authorize various roles like retailer, Manufacturer,etc
     address public Owner;
 
     //note this constructor will be called when smart contract will be deployed on blockchain
-    constructor() public {
+    constructor() {
         Owner = msg.sender;
     }
 
@@ -60,25 +60,32 @@ contract SupplyChain {
     mapping(uint256 => agriculture) public AgricultureStock;
 
     //To show status to client applications
-    function showStage(uint256 _agricultureID)
-        public
-        view
-        returns (string memory)
-    {
-        require(agricultureCtr > 0);
-        if (AgricultureStock[_agricultureID].stage == STAGE.Init)
-            return "Agriculture tool/technique Ordered";
-        else if (AgricultureStock[_agricultureID].stage == STAGE.RawMaterialSupply)
-            return "Raw Material Supply Stage";
-        else if (AgricultureStock[_agricultureID].stage == STAGE.Manufacture)
-            return "Manufacturing Stage";
-        else if (AgricultureStock[_agricultureID].stage == STAGE.Distribution)
-            return "Distribution Stage";
-        else if (AgricultureStock[_agricultureID].stage == STAGE.Retail)
-            return "Retail Stage";
-        else if (AgricultureStock[_agricultureID].stage == STAGE.Sold)
-            return "Agriculture tool/technique Sold";
-    }
+    //To show status to client applications
+function showStage(uint256 _agricultureID)
+    public
+    view
+    returns (string memory)
+{
+    require(agricultureCtr > 0, "No agriculture tools available");
+    require(_agricultureID > 0 && _agricultureID <= agricultureCtr, "Invalid agriculture ID");
+
+    if (AgricultureStock[_agricultureID].stage == STAGE.Init)
+        return "Agriculture tool/technique Ordered";
+    else if (AgricultureStock[_agricultureID].stage == STAGE.RawMaterialSupply)
+        return "Raw Material Supply Stage";
+    else if (AgricultureStock[_agricultureID].stage == STAGE.Manufacture)
+        return "Manufacturing Stage";
+    else if (AgricultureStock[_agricultureID].stage == STAGE.Distribution)
+        return "Distribution Stage";
+    else if (AgricultureStock[_agricultureID].stage == STAGE.Retail)
+        return "Retail Stage";
+    else if (AgricultureStock[_agricultureID].stage == STAGE.Sold)
+        return "Agriculture tool/technique Sold";
+    
+    // Default return to avoid the warning
+    return "Stage not found";
+}
+
 
     //To store information about raw material supplier
     struct rawMaterialSupplier {
